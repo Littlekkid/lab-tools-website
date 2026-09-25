@@ -1,5 +1,5 @@
-import { codonTable } from "./table";
-function translateFromAug(rnaSequence) {
+import { codonTable } from "./table.js";
+export function translateFromAug(rnaSequence) {
     // 1. 定位第一个 AUG 的位置
     let startIndex = rnaSequence.indexOf('AUG');
     

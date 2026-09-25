@@ -1,11 +1,17 @@
-import { dnaToDnaPairs, dnaToRnaPairs, rnaToRnaPairs } from './table.js';
+import { findBaseSequence } from './findbase.js';
+import { translateFromAug } from './trans.js';
 import { getText } from './i18n.js';
 
-// 初始化模块事件监听（在 pairing.html 被加载到 DOM 后执行）
+// 初始化模块事件监听
 export function initPairingModule() {
     const pairBtn = document.getElementById('btn-pair');
     if (pairBtn) {
         pairBtn.addEventListener('click', handlePairing);
+    }
+    // 2. 蛋白质翻译按钮
+    const translateBtn = document.getElementById('btn-translate');
+    if (translateBtn) {
+        translateBtn.addEventListener('click', handleTranslation);
     }
 }
 
@@ -14,7 +20,7 @@ function handlePairing() {
     const inputArea = document.getElementById('pairing-input');
     const resultBox = document.getElementById('pairing-result');
 
-    // 1. 获取输入并转为大写，去除空格
+    // 1. 获取用户输入
     const rawSeq = inputArea.value.trim().toUpperCase();
     const mode = modeSelect.value;
 
@@ -23,43 +29,61 @@ function handlePairing() {
         return;
     }
 
-    // 2. 根据模式选择对应的字典映射
-    let pairTable;
-    if (mode === 'dna-dna') {
-        pairTable = dnaToDnaPairs;
-    } else if (mode === 'dna-rna') {
-        pairTable = dnaToRnaPairs;
-    } else if (mode === 'rna-rna') {
-        pairTable = rnaToRnaPairs;
-    }
+    // 2. 调用算法模块
+    const result = findBaseSequence(rawSeq, mode);
 
-    // 3. 逐个碱基配对
-    let pairedArray = [];
-    let isValid = true;
-
-    for (let i = 0; i < rawSeq.length; i++) {
-        const char = rawSeq[i];
-        const matched = pairTable[char];
-
-        if (matched) {
-            pairedArray.push(matched);
-        } else {
-            // 遇到未知碱基/非法字符
-            isValid = false;
-            break;
-        }
-    }
-
-    // 4. 判断结果并渲染到 UI
-    if (!isValid) {
+    // 3. 处理返回结果并渲染 UI
+    if (result === null) {
         resultBox.className = 'result-box error-text';
-        resultBox.textContent = getText('invalidSequence'); // 查多语言字典提示非法字符
+        resultBox.textContent = getText('invalidSequence');
+    } else {
+        resultBox.className = 'result-box success-text';
+        resultBox.textContent = result;
+    }
+}
+// 蛋白质翻译处理函数
+function handleTranslation() {
+    const sourceTypeSelect = document.getElementById('source-type');
+    const inputArea = document.getElementById('translation-input');
+    const resultBox = document.getElementById('translation-result');
+
+    const rawSeq = inputArea.value.trim().toUpperCase();
+    const sourceType = sourceTypeSelect.value;
+
+    if (!rawSeq) {
+        resultBox.textContent = '';
         return;
     }
 
-    // 5. 将互补链反转 (5' -> 3' 方向) 并拼接成字符串
-    const finalResult = pairedArray.reverse().join('');
+    let targetRnaSeq = rawSeq;
 
-    resultBox.className = 'result-box success-text';
-    resultBox.textContent = finalResult;
+    // 根据输入源类型判断是否先跑 findbase 进行转录/配对
+    if (sourceType === 'genomic-dna') {
+        // Genomic DNA -> 转录成 RNA ('dna-rna')
+        targetRnaSeq = findBaseSequence(rawSeq, 'dna-rna');
+    } else if (sourceType === 'pre-mrna') {
+        // pre-mRNA -> 互补成 RNA ('rna-rna')
+        targetRnaSeq = findBaseSequence(rawSeq, 'rna-rna');
+    } else if (sourceType === 'mature-mrna') {
+        // Mature mRNA -> 直接作为 mRNA 处理
+        targetRnaSeq = rawSeq;
+    }
+
+    // 如果在前置碱基转录/互补过程中检测出非法字符
+    if (targetRnaSeq === null) {
+        resultBox.className = 'result-box error-text';
+        resultBox.textContent = getText('invalidSequence');
+        return;
+    }
+
+    // 执行氨基酸翻译算法
+    const translationResult = translateFromAug(targetRnaSeq);
+
+    if (translationResult === null) {
+        resultBox.className = 'result-box error-text';
+        resultBox.textContent = getText('noAugError'); // 查字典提示未找到起始密码子 AUG
+    } else {
+        resultBox.className = 'result-box success-text';
+        resultBox.textContent = translationResult;
+    }
 }

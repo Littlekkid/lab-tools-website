@@ -27,7 +27,7 @@ export const translations = {
 };
 
 // 当前选中的语言，默认德语
-let currentLang = 'de';
+let currentLang = 'en';
 
 // 2. 核心函数 A：改变当前语言
 export function setLanguage(lang) {
