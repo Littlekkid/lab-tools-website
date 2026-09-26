@@ -2,27 +2,34 @@
 export const translations = {
     // 德语 (默认)
     de: {
-        title: "Bioinformatik-Werkzeuge",
-        pairingTab: "Nukleinsäure-Paarung",
-        unitTab: "Einheitenumrechnung",
-        noAugError: "Kein Start-Codon (AUG) gefunden.",
-        translateBtn: "Übersetzen"
+        "appTitle": "Lab Tools",
+        "pairingTitle": "Basenpaarung",
+        "pairingModeLabel": "Paarungsmodus auswählen:",
+        "inputSequenceLabel": "Eingabesequenz:",
+        "invalidSequence": "Ungültige Sequenz. Bitte geben Sie eine gültige DNA- oder RNA-Sequenz ein.",
+        "btnRunPairing": "Paarung starten",
+        "resultLabel": "Ergebnis:",
+        "translationTitle": "Protein finden",
+        "sourceTypeLabel": "Quelltyp auswählen:",
+        "unitTab": "Einheitenumrechnung",
+        "noAugError": "Kein Start-Codon (AUG) gefunden.",
+        "btnRunTranslation": "Übersetzen"
     },
-    // 中文
-    zh: {
-        title: "生物信息学工具箱",
-        pairingTab: "核酸配对",
-        unitTab: "单位换算",
-        noAugError: "未找到起始密码子 (AUG)。",
-        translateBtn: "翻译"
-    },
+    
     // 英语
     en: {
-        title: "Bioinformatics Tools",
-        pairingTab: "Nucleic Acid Pairing",
-        unitTab: "Unit Conversion",
-        noAugError: "No start codon (AUG) found.",
-        translateBtn: "Translate"
+        "appTitle": "Lab Tools",
+        "pairingTitle": "Base Pairing",
+        "pairingModeLabel": "Select Pairing Mode:",
+        "inputSequenceLabel": "Input Sequence:",
+        'invalidSequence': 'Invalid sequence. Please enter a valid DNA or RNA sequence.',
+        "btnRunPairing": "Pair",
+        "resultLabel": "Result:",
+        "translationTitle": "Find Protein",
+        "sourceTypeLabel": "Select Source Type:",
+        "unitTab": "Unit Conversion",
+        "noAugError": "No start codon (AUG) found.",
+        "btnRunTranslation": "Translate"
     }
 };
 

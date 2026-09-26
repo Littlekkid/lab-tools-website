@@ -9,7 +9,19 @@
 </head>
 <body>
     <header>
-        <h1>Lab Tools</h1>
+        <h1 data-i18n="appTitle">Lab Tools</h1>
+        <!-- 语言切换下拉框 -->
+        <div class="lang-selector">
+            <select id="lang-select">
+                <option value="en">EN</option>
+                <option value="de">DE</option>
+            </select>
+        </div>
+        <!-- 选项卡导航区域 -->
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="pairing" data-i18n="tabPairing">Base Pairing</button>
+            <button class="tab-btn" data-tab="unit" data-i18n="tabUnit">Unit Conversion</button>
+        </nav>
     </header>
 
     <!-- 挂载容器：modules/pairing.html 会被 fetch 塞进这里 -->
