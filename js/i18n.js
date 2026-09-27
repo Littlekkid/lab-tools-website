@@ -2,31 +2,58 @@
 export const translations = {
     // 德语 (默认)
     de: {
-        title: "Bioinformatik-Werkzeuge",
-        pairingTab: "Nukleinsäure-Paarung",
-        unitTab: "Einheitenumrechnung",
-        noAugError: "Kein Start-Codon (AUG) gefunden.",
-        translateBtn: "Übersetzen"
+        "appTitle": "Lab Tools",
+        "tabPairing": "Basenpaarung",
+        "tabCalculator": "Laborrechner",
+
+        "pairingTitle": "Basenpaarung",
+        "pairingModeLabel": "Paarungsmodus auswählen:",
+        "inputSequenceLabel": "Eingabesequenz:",
+        "invalidSequence": "Ungültige Sequenz. Bitte geben Sie eine gültige DNA- oder RNA-Sequenz ein.",
+        "btnRunPairing": "Paarung starten",
+        "resultLabel": "Ergebnis:",
+
+        "translationTitle": "Protein finden",
+        "sourceTypeLabel": "Quelltyp auswählen:",
+        "noAugError": "Kein Start-Codon (AUG) gefunden.",
+        "btnRunTranslation": "Übersetzen",
+
+        "calcTitle": "Masse- / Molaritätsrechner",
+        "labelMw": "Molare Masse (g/mol):",
+        "labelConc": "Zielkonzentration (mM):",
+        "labelVol": "Zielvolumen (mL):",
+        "btnCalculate": "Berechnen",
+        "labelResult": "Benötigte Feststoffmasse:"
     },
-    // 中文
-    zh: {
-        title: "生物信息学工具箱",
-        pairingTab: "核酸配对",
-        unitTab: "单位换算",
-        noAugError: "未找到起始密码子 (AUG)。",
-        translateBtn: "翻译"
-    },
+
     // 英语
     en: {
-        title: "Bioinformatics Tools",
-        pairingTab: "Nucleic Acid Pairing",
-        unitTab: "Unit Conversion",
-        noAugError: "No start codon (AUG) found.",
-        translateBtn: "Translate"
+        "appTitle": "Lab Tools",
+        "tabPairing": "Base Pairing",
+        "tabCalculator": "Lab Calculators",
+
+        "pairingTitle": "Base Pairing",
+        "pairingModeLabel": "Select Pairing Mode:",
+        "inputSequenceLabel": "Input Sequence:",
+        'invalidSequence': 'Invalid sequence. Please enter a valid DNA or RNA sequence.',
+        "btnRunPairing": "Pair",
+        "resultLabel": "Result:",
+
+        "translationTitle": "Find Protein",
+        "sourceTypeLabel": "Select Source Type:",
+        "noAugError": "No start codon (AUG) found.",
+        "btnRunTranslation": "Translate",
+
+        "calcTitle": "Mass / Molarity Calculator",
+        "labelMw": "Molar Mass (g/mol):",
+        "labelConc": "Desired Concentration (mM):",
+        "labelVol": "Desired Volume (mL):",
+        "btnCalculate": "Calculate",
+        "labelResult": "Required Solid Mass:"
     }
 };
 
-// 当前选中的语言，默认德语
+// 当前选中的语言，默认是英语
 let currentLang = 'en';
 
 // 2. 核心函数 A：改变当前语言
@@ -44,11 +71,11 @@ export function getText(key) {
 export function updatePageLanguage() {
     // 找出所有带有 data-i18n 属性的 HTML 标签
     const elements = document.querySelectorAll('[data-i18n]');
-    
+
     elements.forEach(element => {
         // 获取这个标签绑定的 key (比如 "title" 或 "pairingTab")
         const key = element.getAttribute('data-i18n');
-        
+
         // 查字典并替换标签里的文字
         if (translations[currentLang][key]) {
             element.textContent = translations[currentLang][key];

@@ -1,0 +1,36 @@
+<!-- modules/calculator.html -->
+<div class="calculator-container">
+    <section class="tool-section">
+    <h2 data-i18n="calcTitle">Mass / Molarity Calculator</h2>
+    
+    <form id="calc-form" onsubmit="return false;">
+        <!-- 1. 摩尔质量 MW -->
+        <div class="form-group">
+            <label for="mw-input" data-i18n="labelMw">Molar Mass (g/mol):</label>
+            <input type="number" id="mw-input" step="any" placeholder="e.g. 58.44" required>
+        </div>
+
+        <!-- 2. 目标浓度 Concentration -->
+        <div class="form-group">
+            <label for="conc-input" data-i18n="labelConc">Desired Concentration (mM):</label>
+            <input type="number" id="conc-input" step="any" placeholder="e.g. 100" required>
+        </div>
+
+        <!-- 3. 目标体积 Volume -->
+        <div class="form-group">
+            <label for="vol-input" data-i18n="labelVol">Desired Volume (mL):</label>
+            <input type="number" id="vol-input" step="any" placeholder="e.g. 50" required>
+        </div>
+
+        <!-- 计算按钮 -->
+        <button type="button" id="btn-calculate" data-i18n="btnCalculate">Calculate</button>
+    </form>
+
+    <!-- 结果展示区 -->
+    <div class="result-container">
+        <h3 data-i18n="labelResult">Required Solid Mass:</h3>
+        <p id="calc-result-mg">--- mg</p>
+        <p id="calc-result-g">--- g</p>
+    </div>
+    </section>
+</div>
