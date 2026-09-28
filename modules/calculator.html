@@ -33,4 +33,125 @@
         <p id="calc-result-g">--- g</p>
     </div>
     </section>
+<!-- 2. 母液稀释计算器 (C1V1 = C2V2) -->
+    <section class="tool-section">
+        <h2 data-i18n="dilutionTitle">Stock Dilution Calculator (C1V1 = C2V2)</h2>
+        
+        <form id="dilution-form" onsubmit="return false;">
+            <!-- 1. 母液浓度 C1 -->
+            <div class="form-group">
+                <label for="c1-input" data-i18n="labelC1">Stock Concentration (C1, mM):</label>
+                <input type="number" id="c1-input" step="any" placeholder="e.g. 1000" required>
+            </div>
+
+            <!-- 2. 目标浓度 C2 -->
+            <div class="form-group">
+                <label for="c2-input" data-i18n="labelC2">Target Concentration (C2, mM):</label>
+                <input type="number" id="c2-input" step="any" placeholder="e.g. 10" required>
+            </div>
+
+            <!-- 3. 目标总体积 V2 -->
+            <div class="form-group">
+                <label for="v2-input" data-i18n="labelV2">Target Final Volume (V2, mL):</label>
+                <input type="number" id="v2-input" step="any" placeholder="e.g. 100" required>
+            </div>
+
+            <!-- 计算按钮 -->
+            <button type="button" id="btn-calculate-dilution" data-i18n="btnCalculate">Calculate</button>
+        </form>
+
+        <!-- 结果展示区 -->
+        <div class="result-container">
+            <h3 data-i18n="labelDilutionResult">Preparation Recipe:</h3>
+            <p>
+                <span data-i18n="labelStockVol">Stock Volume (V1):</span>
+                <span id="dil-result-v1">---</span> mL
+            </p>
+            <p>
+                <span data-i18n="labelSolventVol">Solvent Volume:</span>
+                <span id="dil-result-solvent">---</span> mL
+            </p>
+        </div>
+    </section>
+<!-- 3. 离心力 / 转速换算器 (RPM ↔ RCF/g) -->
+    <section class="tool-section">
+        <h2 data-i18n="centrifugeTitle">Centrifuge Speed / Force Converter (RPM ↔ g)</h2>
+        
+        <form id="centrifuge-form" onsubmit="return false;">
+            <!-- 1. 离心机转头半径 r -->
+            <div class="form-group">
+                <label for="radius-input" data-i18n="labelRadius">Rotor Radius (r, cm):</label>
+                <input type="number" id="radius-input" step="any" placeholder="e.g. 7.5" required>
+            </div>
+
+            <!-- 2. 转速 RPM -->
+            <div class="form-group">
+                <label for="rpm-input" data-i18n="labelRpm">Speed (RPM):</label>
+                <input type="number" id="rpm-input" step="any" placeholder="e.g. 12000">
+            </div>
+
+            <!-- 3. 相对离心力 RCF/g -->
+            <div class="form-group">
+                <label for="rcf-input" data-i18n="labelRcf">Centrifugal Force (× g):</label>
+                <input type="number" id="rcf-input" step="any" placeholder="e.g. 13400">
+            </div>
+
+            <!-- 计算按钮 -->
+            <button type="button" id="btn-calc-rcf" data-i18n="btnCalcRcf">Calculate Force (g) from RPM</button>
+            <button type="button" id="btn-calc-rpm" data-i18n="btnCalcRpm">Calculate Speed (RPM) from g</button>
+        </form>
+
+        <!-- 结果展示区 -->
+        <div class="result-container">
+            <h3 data-i18n="labelCentrifugeResult">Conversion Result:</h3>
+            <p>
+                <span data-i18n="labelResultRpm">Calculated Speed:</span>
+                <span id="centrifuge-result-rpm">---</span> RPM
+            </p>
+            <p>
+                <span data-i18n="labelResultRcf">Calculated Force:</span>
+                <span id="centrifuge-result-rcf">---</span> × g
+            </p>
+        </div>
+    </section>
+<!-- 4. 光谱定量计算器 (Nucleic Acid Quantification / Beer-Lambert) -->
+    <section class="tool-section">
+        <h2 data-i18n="quantTitle">Spectrophotometric Quantification (A260)</h2>
+        
+        <form id="quant-form" onsubmit="return false;">
+            <!-- 1. 样品类型 -->
+            <div class="form-group">
+                <label for="sample-type" data-i18n="labelSampleType">Sample Type:</label>
+                <select id="sample-type">
+                    <option value="dsdna" data-i18n="optDsDna">dsDNA (50 µg/mL per A260)</option>
+                    <option value="ssdna" data-i18n="optSsDna">ssDNA / Oligo (33 µg/mL per A260)</option>
+                    <option value="rna" data-i18n="optRna">RNA (40 µg/mL per A260)</option>
+                </select>
+            </div>
+
+            <!-- 2. 吸光度 A260 -->
+            <div class="form-group">
+                <label for="a260-input" data-i18n="labelA260">Absorbance (A260):</label>
+                <input type="number" id="a260-input" step="any" placeholder="e.g. 0.5" required>
+            </div>
+
+            <!-- 3. 稀释倍数 -->
+            <div class="form-group">
+                <label for="dil-factor-input" data-i18n="labelDilFactor">Dilution Factor:</label>
+                <input type="number" id="dil-factor-input" step="any" value="1" placeholder="e.g. 1 (No dilution)" required>
+            </div>
+
+            <!-- 计算按钮 -->
+            <button type="button" id="btn-calculate-quant" data-i18n="btnCalculate">Calculate</button>
+        </form>
+
+        <!-- 结果展示区 -->
+        <div class="result-container">
+            <h3 data-i18n="labelQuantResult">Concentration Result:</h3>
+            <p>
+                <span data-i18n="labelResultConc">Calculated Concentration:</span>
+                <span id="quant-result-conc">---</span> ng/µL (µg/mL)
+            </p>
+        </div>
+    </section>
 </div>
