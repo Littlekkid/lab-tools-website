@@ -9,3 +9,21 @@ textarea {
     width: 100%;
     resize: none; /* 禁用拖拽调整大小 */
 }
+
+.site-footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #eee;
+}
+
+.site-footer a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
