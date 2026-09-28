@@ -18,3 +18,21 @@ export function calculateSolidMass(concMM, volML, mw) {
 
     return { massMg, massG };
 }
+
+// @ts-check
+
+/**
+ * 计算母液稀释体积
+ * @param {number} c1 母液浓度
+ * @param {number} c2 目标浓度
+ * @param {number} v2 目标体积
+ * @returns {{ v1: number, vSolvent: number }}
+ */
+export function calculateDilution(c1, c2, v2) {
+    if (c1 <= 0 || c2 <= 0 || v2 <= 0 || c2 > c1) {
+        return { v1: 0, vSolvent: 0 };
+    }
+    const v1 = (c2 * v2) / c1;
+    const vSolvent = v2 - v1;
+    return { v1, vSolvent };
+}

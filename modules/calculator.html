@@ -33,4 +33,44 @@
         <p id="calc-result-g">--- g</p>
     </div>
     </section>
+<!-- 2. 母液稀释计算器 (C1V1 = C2V2) -->
+    <section class="tool-section">
+        <h2 data-i18n="dilutionTitle">Stock Dilution Calculator (C1V1 = C2V2)</h2>
+        
+        <form id="dilution-form" onsubmit="return false;">
+            <!-- 1. 母液浓度 C1 -->
+            <div class="form-group">
+                <label for="c1-input" data-i18n="labelC1">Stock Concentration (C1, mM):</label>
+                <input type="number" id="c1-input" step="any" placeholder="e.g. 1000" required>
+            </div>
+
+            <!-- 2. 目标浓度 C2 -->
+            <div class="form-group">
+                <label for="c2-input" data-i18n="labelC2">Target Concentration (C2, mM):</label>
+                <input type="number" id="c2-input" step="any" placeholder="e.g. 10" required>
+            </div>
+
+            <!-- 3. 目标总体积 V2 -->
+            <div class="form-group">
+                <label for="v2-input" data-i18n="labelV2">Target Final Volume (V2, mL):</label>
+                <input type="number" id="v2-input" step="any" placeholder="e.g. 100" required>
+            </div>
+
+            <!-- 计算按钮 -->
+            <button type="button" id="btn-calculate-dilution" data-i18n="btnCalculate">Calculate</button>
+        </form>
+
+        <!-- 结果展示区 -->
+        <div class="result-container">
+            <h3 data-i18n="labelDilutionResult">Preparation Recipe:</h3>
+            <p>
+                <span data-i18n="labelStockVol">Stock Volume (V1):</span>
+                <span id="dil-result-v1">---</span> mL
+            </p>
+            <p>
+                <span data-i18n="labelSolventVol">Solvent Volume:</span>
+                <span id="dil-result-solvent">---</span> mL
+            </p>
+        </div>
+    </section>
 </div>

@@ -5,7 +5,7 @@ export const translations = {
         "appTitle": "Lab Tools",
         "tabPairing": "Basenpaarung",
         "tabCalculator": "Laborrechner",
-
+        //Base Pairing
         "pairingTitle": "Basenpaarung",
         "pairingModeLabel": "Paarungsmodus auswählen:",
         "inputSequenceLabel": "Eingabesequenz:",
@@ -17,13 +17,21 @@ export const translations = {
         "sourceTypeLabel": "Quelltyp auswählen:",
         "noAugError": "Kein Start-Codon (AUG) gefunden.",
         "btnRunTranslation": "Übersetzen",
-
+        // Lab Calculator
         "calcTitle": "Masse- / Molaritätsrechner",
         "labelMw": "Molare Masse (g/mol):",
         "labelConc": "Zielkonzentration (mM):",
         "labelVol": "Zielvolumen (mL):",
         "btnCalculate": "Berechnen",
-        "labelResult": "Benötigte Feststoffmasse:"
+        "labelResult": "Benötigte Feststoffmasse:",
+
+        "dilutionTitle": "Stammlösungsverdünnungsrechner (C1V1 = C2V2)",
+        "labelC1": "Stammlösungskonzentration (C1, mM):",
+        "labelC2": "Zielkonzentration (C2, mM):",
+        "labelV2": "ZiEndvolumen (V2, mL):",
+        "labelDilutionResult": "Ansetzschema:",
+        "labelStockVol": "Benötigtes Stammvolumen (V1):",
+        "labelSolventVol": "Lösungsmittelvolumen:"
     },
 
     // 英语
@@ -31,7 +39,7 @@ export const translations = {
         "appTitle": "Lab Tools",
         "tabPairing": "Base Pairing",
         "tabCalculator": "Lab Calculators",
-
+        //Base Pairing
         "pairingTitle": "Base Pairing",
         "pairingModeLabel": "Select Pairing Mode:",
         "inputSequenceLabel": "Input Sequence:",
@@ -43,13 +51,21 @@ export const translations = {
         "sourceTypeLabel": "Select Source Type:",
         "noAugError": "No start codon (AUG) found.",
         "btnRunTranslation": "Translate",
-
+        // Lab Calculator
         "calcTitle": "Mass / Molarity Calculator",
         "labelMw": "Molar Mass (g/mol):",
         "labelConc": "Desired Concentration (mM):",
         "labelVol": "Desired Volume (mL):",
         "btnCalculate": "Calculate",
-        "labelResult": "Required Solid Mass:"
+        "labelResult": "Required Solid Mass:",
+
+        "dilutionTitle": "Stock Dilution Calculator (C1V1 = C2V2)",
+        "labelC1": "Stock Concentration (C1, mM):",
+        "labelC2": "Target Concentration (C2, mM):",
+        "labelV2": "Target Final Volume (V2, mL):",
+        "labelDilutionResult": "Preparation Recipe:",
+        "labelStockVol": "Stock Volume (V1):",
+        "labelSolventVol": "Solvent Volume:"
     }
 };
 
